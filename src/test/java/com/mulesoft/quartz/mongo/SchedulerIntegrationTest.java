@@ -39,11 +39,11 @@ import static org.quartz.TriggerBuilder.newTrigger;
 
 public class SchedulerIntegrationTest extends Assert {
 
-    private String MONGO_HOST = System.getProperty("mongo.db.host","127.0.0.1");
-    private int MONGO_PORT = Integer.parseInt(System.getProperty("mongo.db.port","27017"));
-    private String MONGO_DATABASE = System.getProperty("mongo.db.name","quartz");
-    private String MONGO_USER = System.getProperty("mongo.db.user");
-    private String MONGO_PASSWORD = System.getProperty("mongo.db.password");
+    private String MONGO_HOST = System.getProperty("mongo.db.host","ds033477.mongolab.com");
+    private int MONGO_PORT = Integer.parseInt(System.getProperty("mongo.db.port","33477"));
+    private String MONGO_DATABASE = System.getProperty("mongo.db.name","dp-unit-tests");
+    private String MONGO_USER = System.getProperty("mongo.db.user", "dp-unit-test");
+    private String MONGO_PASSWORD = System.getProperty("mongo.db.password", "r2nBy07r");
 
     public static int COUNTER = 0;
 
@@ -291,7 +291,7 @@ public class SchedulerIntegrationTest extends Assert {
         assertEquals(3, triggerCollection.find().count());
         
         // wait for acquire to be called and the job to be stored for each job
-        verify(jobStore, timeout(2000).times(3)).triggeredJobComplete((OperableTrigger)anyObject(), (JobDetail)anyObject(), (CompletedExecutionInstruction)anyObject());
+        verify(jobStore, timeout(5000).times(3)).triggeredJobComplete((OperableTrigger)anyObject(), (JobDetail)anyObject(), (CompletedExecutionInstruction)anyObject());
     }
     
     /**
