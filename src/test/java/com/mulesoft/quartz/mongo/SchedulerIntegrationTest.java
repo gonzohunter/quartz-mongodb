@@ -42,8 +42,8 @@ public class SchedulerIntegrationTest extends Assert {
 	private static final String MONGO_HOST = System.getProperty("mongo.db.host","127.0.0.1");
 	private static final int MONGO_PORT = Integer.parseInt(System.getProperty("mongo.db.port","27017"));
 	private static final String MONGO_DATABASE = System.getProperty("mongo.db.name","quartz");
-	private static final String MONGO_USER = System.getProperty("mongo.db.user");
-	private static final String MONGO_PASSWORD = System.getProperty("mongo.db.password");
+	private static final String MONGO_USER = System.getProperty("mongo.db.user", "");
+	private static final String MONGO_PASSWORD = System.getProperty("mongo.db.password", "");
 
     public static int COUNTER = 0;
 
